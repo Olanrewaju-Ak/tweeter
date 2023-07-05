@@ -1,0 +1,11 @@
+header {
+  height: 32.5rem;
+  padding-top: 7.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #dbd9d7;
+  background-image: url('https://www.transparenttextures.com/patterns/basketball.png');
+}
