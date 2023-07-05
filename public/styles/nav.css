@@ -1,11 +1,13 @@
 nav {
   background-color: #4056a1;
-  width: 100vw;
+  width: 100%;
   height: 7.5rem;
   padding: 1.5em;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: fixed;
 }
 nav > span {
   font-family: 'Bungee';
