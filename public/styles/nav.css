@@ -16,3 +16,6 @@ nav > div {
   justify-content: center;
   align-items: center;
 }
+.fa-angles-down {
+  color: red;
+}
