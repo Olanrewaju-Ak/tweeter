@@ -1,0 +1,40 @@
+h2 {
+  margin-top: 1rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > label {
+  margin-top: 1rem;
+  font-weight: 300;
+}
+
+form > textarea {
+  border: none;
+  height: 2.5rem;
+  border-bottom: 2px solid #545149;
+  background-color: #f4f1ec;
+  resize: none;
+}
+/* form > textarea:focus {
+  border: none;
+} */
+
+form > div {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+form > div > button {
+  border: none;
+  padding: 0.25rem;
+  font-family: 'Bungee';
+  background-color: #4056a1;
+  color: white;
+}
+form > div > output {
+  font-family: 'Bungee';
+  color: #545149;
+}
