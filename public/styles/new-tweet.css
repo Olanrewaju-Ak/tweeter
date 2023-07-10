@@ -38,3 +38,7 @@ form > div > output {
   font-family: 'Bungee';
   color: #545149;
 }
+
+.danger {
+  color: red;
+}
