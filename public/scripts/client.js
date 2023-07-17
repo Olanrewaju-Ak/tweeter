@@ -5,45 +5,19 @@
  */
 
 $(document).ready(function () {
-  const tweetData = {
-    user: {
-      name: 'Newton',
-      avatars: 'https://i.imgur.com/73hZDYK.png',
-      handle: '@SirIsaac'
-    },
-    content: {
-      text: 'If I have seen further it is by standing on the shoulders of giants'
-    },
-    created_at: 1461116232227
-  };
+  // const tweetData = {
+  //   user: {
+  //     name: 'Newton',
+  //     avatars: 'https://i.imgur.com/73hZDYK.png',
+  //     handle: '@SirIsaac'
+  //   },
+  //   content: {
+  //     text: 'If I have seen further it is by standing on the shoulders of giants'
+  //   },
+  //   created_at: 1461116232227
+  // };
 
-  // Fake data taken from initial-tweets.json
-  /*
-  const data = [
-    {
-      user: {
-        name: 'Newton',
-        avatars: 'https://i.imgur.com/73hZDYK.png',
-        handle: '@SirIsaac'
-      },
-      content: {
-        text: 'If I have seen further it is by standing on the shoulders of giants'
-      },
-      created_at: 1461116232227
-    },
-    {
-      user: {
-        name: 'Descartes',
-        avatars: 'https://i.imgur.com/nlhLi3I.png',
-        handle: '@rd'
-      },
-      content: {
-        text: 'Je pense , donc je suis'
-      },
-      created_at: 1461113959088
-    }
-  ];
-*/
+  //function to create a new tweetstructure and display it
   const $createTweetElement = function (data) {
     for (const info in data) {
       return `<article class="tweet" >
@@ -70,6 +44,7 @@ $(document).ready(function () {
 
   // const $tweet = $createTweetElement(tweetData);
 
+  //function to display all tweets from users on the page
   const $renderTweets = function (array) {
     for (const item of array) {
       //calling createTweet on each tweet
@@ -80,6 +55,7 @@ $(document).ready(function () {
   };
   // $renderTweets(data);
 
+  //Posting a tweet using the form
   const $form = $('form');
   const $tweetInput = $('#tweet-text');
 
@@ -87,9 +63,22 @@ $(document).ready(function () {
     event.preventDefault();
 
     const $tweetValue = $tweetInput.val();
-    console.log($tweetValue);
+
     $(this).serialize();
-    // console.log($(this).serialize());
+
+    //form validation
+    //checking if the form is empty
+    if (!$tweetValue) {
+      alert('please input a message');
+      return;
+    }
+
+    //checking if the tweet isi longer than 140 characters
+    if ($tweetValue.length > 140) {
+      alert('maximum tweet length exceeded');
+      return;
+    }
+
     //sbmittingthe tweet via Ajax
     $.ajax({
       url: '/tweets',
