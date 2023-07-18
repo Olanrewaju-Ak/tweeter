@@ -5,6 +5,14 @@
  */
 /* global $  document timeago alert*/
 $(document).ready(function () {
+//function to escape insecure text and prevent cross-site scripting
+	const escape = function (str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
+
   //function to create a new tweetstructure and display it
   const $createTweetElement = function (data) {
     for (const info in data) {
@@ -16,7 +24,7 @@ $(document).ready(function () {
 					</div>
 					<p>${data.user.handle}</p>
 				</header>
-				<p class="tweet-content">${data.content.text}</p>
+				<p class="tweet-content">${escape(data.content.text)}</p>
 				<footer>
 					<p>${timeago.format(new Date(data.created_at).toDateString())}</p>
 					<div>
