@@ -49,8 +49,8 @@ $(document).ready(function () {
   };
   //creating the error messages
   const $error = $('<article>').addClass('error');
-  const $errMessage1 = $(`<p>🛑please enter a thought!!!🛑</p>`);
-  const $errMessage2 = $(`<p>🛑maximum tweet length exceeded🛑</p>`);
+  const $errMessage1 = $(`<p>🛑 Please enter a thought!!! 🛑</p>`);
+  const $errMessage2 = $(`<p>🛑 maximum tweet length exceeded 🛑</p>`);
 
   const $errorMessage = function (message) {
     $error.append(message);
@@ -60,8 +60,10 @@ $(document).ready(function () {
     //   console.log('finished');
     // });
   };
+
+  //function to remove error
   const $removeErrorMessage = function () {
-    $('.container').prepend($error);
+    $('.error').empty();
   };
 
   //using Ajax to makea get request from '/tweets'
@@ -85,7 +87,7 @@ $(document).ready(function () {
   $form.submit(function (event) {
     event.preventDefault();
     //remove error on submit of the form
-    $('.error').empty();
+    $removeErrorMessage();
 
     const $tweetValue = $tweetInput.val();
 
