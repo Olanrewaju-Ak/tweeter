@@ -1,0 +1,10 @@
+.error p {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  color: red;
+  border: 2px solid red;
+  text-transform: capitalize;
+  font-weight: 600;
+}
