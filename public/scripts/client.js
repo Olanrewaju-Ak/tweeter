@@ -5,13 +5,12 @@
  */
 /* global $  document timeago alert*/
 $(document).ready(function () {
-//function to escape insecure text and prevent cross-site scripting
-	const escape = function (str) {
+  //function to escape insecure text and prevent cross-site scripting
+  const escape = function (str) {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
-
 
   //function to create a new tweetstructure and display it
   const $createTweetElement = function (data) {
@@ -48,6 +47,22 @@ $(document).ready(function () {
       $('#tweets-container').prepend($singleTweet);
     }
   };
+  //creating the error messages
+  const $error = $('<article>').addClass('error');
+  const $errMessage1 = $(`<p>🛑please enter a thought!!!🛑</p>`);
+  const $errMessage2 = $(`<p>🛑maximum tweet length exceeded🛑</p>`);
+
+  const $errorMessage = function (message) {
+    $error.append(message);
+    $('.container').prepend($error);
+
+    // $error.slideDown(1000, function () {
+    //   console.log('finished');
+    // });
+  };
+  const $removeErrorMessage = function () {
+    $('.container').prepend($error);
+  };
 
   //using Ajax to makea get request from '/tweets'
   const loadTweets = function () {
@@ -69,18 +84,20 @@ $(document).ready(function () {
 
   $form.submit(function (event) {
     event.preventDefault();
+    //remove error on submit of the form
+    $('.error').empty();
 
     const $tweetValue = $tweetInput.val();
 
     //form validation
     //checking if the form is empty
     if (!$tweetValue) {
-      alert('please input a message');
+      $errorMessage($errMessage1);
       return;
     }
     //checking if the tweet isi longer than 140 characters
     if ($tweetValue.length > 140) {
-      alert('maximum tweet length exceeded');
+      $errorMessage($errMessage2);
       return;
     }
 
