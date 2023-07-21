@@ -1,3 +1,7 @@
+.tweets-container {
+  padding: 0 2rem;
+}
+
 .tweet {
   display: flex;
   flex-direction: column;
@@ -44,4 +48,14 @@ article footer > div {
 }
 .icon:hover {
   color: #ffcf40;
+}
+
+@media only screen and (min-width: 1024px) {
+  .tweets-container {
+    width: 66.67%;
+    margin-left: 1rem;
+  }
+  .tweets-container h2 {
+    margin-top: 0;
+  }
 }
