@@ -1,4 +1,5 @@
 .tweets-container {
+  width: 100%;
   padding: 0 2rem;
 }
 
@@ -29,6 +30,10 @@
 }
 .tweet-content {
   padding: 1.5rem;
+}
+
+.user-handle {
+  color: rgba(64, 87, 161, 0.42);
 }
 
 article footer {

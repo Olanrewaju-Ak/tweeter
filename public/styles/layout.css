@@ -19,6 +19,7 @@ html {
  */
 
 body {
+  width: 100vw;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
@@ -34,6 +35,13 @@ body {
 main {
   width: 100%;
   align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 7.5rem;
 }
 
 @media only screen and (min-width: 1024px) {

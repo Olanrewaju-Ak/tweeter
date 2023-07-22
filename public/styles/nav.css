@@ -9,7 +9,7 @@ nav {
   align-items: center;
   position: fixed;
 }
-nav > span {
+.logo {
   font-family: 'Bungee';
 }
 nav > div {
