@@ -4,16 +4,16 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 /* global $  document timeago */
-$(document).ready(function() {
+$(document).ready(function () {
   //function to escape insecure text and prevent cross-site scripting
-  const escape = function(str) {
+  const escape = function (str) {
     let div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
   //function to create a new tweetstructure and display it
-  const $createTweetElement = function(data) {
+  const $createTweetElement = function (data) {
     for (const info in data) {
       return `<article class="tweet" >
 				<header class="tweet-header">
@@ -38,7 +38,7 @@ $(document).ready(function() {
   };
 
   //function to display all tweets from users on the page
-  const $renderTweets = function(array) {
+  const $renderTweets = function (array) {
     $('.tweets').empty();
     for (const item of array) {
       //calling createTweet on each tweet
@@ -52,24 +52,25 @@ $(document).ready(function() {
   const $errMessage1 = $(`<p>🛑 Please enter a thought!!! 🛑</p>`).addClass('errMessage1');
   const $errMessage2 = $(`<p>🛑 maximum tweet length exceeded 🛑</p>`).addClass('errMessage12');
 
-  const $errorMessage = function(message) {
+  const $errorMessage = function (message) {
     $error.append(message);
     $('.tweets-container').prepend($error);
     if ($('.error').is(':hidden')) {
-      $('.error').slideDown('slow', function() {});
+      $('.error').slideDown('slow', function () {});
     }
   };
 
-  
-
   //using Ajax to makea get request from '/tweets'
-  const loadTweets = function() {
+  const loadTweets = function () {
     $.ajax({
       url: 'http://localhost:8080/tweets',
       type: 'GET',
       dataType: 'json',
       success: (response) => {
         $renderTweets(response);
+      },
+      error: (err) => {
+        console.log('Error: ', err);
       }
     });
   };
@@ -80,7 +81,7 @@ $(document).ready(function() {
   const $form = $('form'); //getting the form from the dom
   const $tweetInput = $('#tweet-text');
 
-  $form.submit(function(event) {
+  $form.submit(function (event) {
     event.preventDefault();
     const $tweetValue = $tweetInput.val();
 
@@ -106,7 +107,7 @@ $(document).ready(function() {
     }
 
     const $data = $(this).serialize();
-    console.log($data);
+
     //posting the tweet to the page
     $.ajax({
       url: '/tweets',
@@ -119,6 +120,9 @@ $(document).ready(function() {
         $('.counter').text(140);
         //reloads the tweets from server to page
         loadTweets();
+      },
+      error: (err) => {
+        console.log('Error: ', err);
       }
     });
   });
